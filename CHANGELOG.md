@@ -1,3 +1,8 @@
+## 0.0.1-alpha.3
+
+* Move platform interface to own package.
+* Add web support
+
 ## 0.0.1-alpha.2
 
 * Clean up for publishing max score

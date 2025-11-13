@@ -1,5 +1,5 @@
-import 'paystack_platform_interface.dart';
-import 'models.dart';
+import 'package:paystack_flutter_platform_interface/models.dart';
+import 'package:paystack_flutter_platform_interface/paystack_platform_interface.dart';
 
 /// The base class for managing payments within your app
 class Paystack {

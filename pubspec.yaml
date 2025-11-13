@@ -6,16 +6,24 @@ repository: https://github.com/PaystackOSS/paystack_flutter
 issue_tracker: https://github.com/PaystackOSS/paystack_flutter/issues
 documentation: https://paystack.com/docs
 topics: [paystack, payments, cards, mpesa]
-
+publish_to: "none"
 
 environment:
-  sdk: '>=3.3.2 <4.0.0'
+  sdk: '>=3.3.0 <4.0.0' 
   flutter: '>=3.3.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.0.2
+
+  paystack_flutter_web:
+    git:
+      url: https://github.com/disparta/paystack_flutter_web.git
+      ref: main
+  paystack_flutter_platform_interface:
+    git:
+      url: https://github.com/disparta/paystack_flutter_platform_interface.git
+      ref: main
 
 dev_dependencies:
   flutter_test:
@@ -31,3 +39,5 @@ flutter:
         pluginClass: PaystackSDKPlugin
       ios:
         pluginClass: PaystackSDKPlugin
+      web:
+        default_package: paystack_web
