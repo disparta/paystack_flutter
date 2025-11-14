@@ -17,8 +17,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _reference = "";
-  final _publicKey = "pk_test_xxxxxx";
-  final _accessCode = "2ksqdeqqlbpqg24";
+  final _publicKey = "pk_test_31";
+  final _accessCode = "88vhiycbd0vpmxj";
   final _paystack = Paystack();
 
   @override
@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   initialize(String publicKey) async {
-        try {
+    try {
       final response = await _paystack.initialize(publicKey, true);
       if (response) {
         log("Sucessfully initialised the SDK");
@@ -43,11 +43,19 @@ class _MyAppState extends State<MyApp> {
   launch() async {
     String reference = "";
     try {
-      final response = await _paystack.launch(_accessCode);
+      Transaction transaction = Transaction(
+        amount: 15 * 100,
+        reference: "",
+        email: "example@gmail.com",
+        currency: "ZAR",
+        accessCode: _accessCode,
+      );
+
+      final response = await _paystack.launch(transaction);
       if (response.status == "success") {
         reference = response.reference;
         log(reference);
-      } else if(response.status == "cancelled") {
+      } else if (response.status == "cancelled") {
         log(response.message);
       } else {
         log(response.message);
@@ -65,23 +73,25 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Paystack SDK'),
+        appBar: AppBar(
+          title: const Text('Paystack SDK'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: launch,
+                child: const Text('Make Payment'),
+              ),
+              Text(
+                "Ref: $_reference",
+                style: Theme.of(context).textTheme.bodyMedium,
+              )
+            ],
           ),
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                    onPressed: launch, child: const Text('Make Payment')),
-                Text(
-                  "Ref: $_reference",
-                  style: Theme.of(context).textTheme.bodyMedium,
-                )
-              ],
-            ),
-          ),
-          )
+        ),
+      ),
     );
   }
 }

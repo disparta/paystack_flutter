@@ -1,6 +1,6 @@
 name: paystack_flutter_sdk
 description: "Paystack Flutter SDK with support for multiple channels to accept payments from your customers in supported regions."
-version: 0.0.1-alpha.2
+version: 0.0.1-alpha.4
 homepage: https://paystack.com
 repository: https://github.com/PaystackOSS/paystack_flutter
 issue_tracker: https://github.com/PaystackOSS/paystack_flutter/issues

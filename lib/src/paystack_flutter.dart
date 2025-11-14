@@ -12,7 +12,7 @@ class Paystack {
 
   /// This method launches the payment UI for customers to interact with
   /// when completing a payment
-  Future<TransactionResponse> launch(String accessCode) {
-    return PaystackSDKPlatform.instance.launch(accessCode);
+  Future<TransactionResponse> launch(Transaction transaction) {
+    return PaystackSDKPlatform.instance.launch(transaction);
   }
 }
