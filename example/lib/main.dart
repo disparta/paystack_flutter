@@ -17,8 +17,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _reference = "";
-  final _publicKey = "pk_test_31";
-  final _accessCode = "88vhiycbd0vpmxj";
+  final _publicKey = "pk_test_31....";
+  final _accessCode = "rox6onpse0....";
   final _paystack = Paystack();
 
   @override
@@ -43,15 +43,7 @@ class _MyAppState extends State<MyApp> {
   launch() async {
     String reference = "";
     try {
-      Transaction transaction = Transaction(
-        amount: 15 * 100,
-        reference: "",
-        email: "example@gmail.com",
-        currency: "ZAR",
-        accessCode: _accessCode,
-      );
-
-      final response = await _paystack.launch(transaction);
+      final response = await _paystack.launch(_accessCode);
       if (response.status == "success") {
         reference = response.reference;
         log(reference);

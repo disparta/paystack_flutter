@@ -172,26 +172,24 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "3c0859d825f8a63468d74244dfd9f48af4402314"
+      resolved-ref: "6cd21e227e4fb42901804bd32e64f2afcf4f372b"
       url: "https://github.com/disparta/paystack_flutter_platform_interface.git"
     source: git
-    version: "0.0.2"
+    version: "0.0.3"
   paystack_flutter_sdk:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1-alpha.4"
+    version: "0.0.1-alpha.5"
   paystack_flutter_web:
     dependency: transitive
     description:
-      path: "."
-      ref: main
-      resolved-ref: fae76398e86009707320189db07740c2e0c425ea
-      url: "https://github.com/disparta/paystack_flutter_web.git"
-    source: git
-    version: "0.0.2"
+      path: "../../paystack_web"
+      relative: true
+    source: path
+    version: "0.0.3"
   platform:
     dependency: transitive
     description:
