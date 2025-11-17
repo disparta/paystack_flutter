@@ -182,13 +182,15 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1-alpha.5"
+    version: "0.0.1-alpha.6"
   paystack_flutter_web:
     dependency: transitive
     description:
-      path: "../../paystack_web"
-      relative: true
-    source: path
+      path: "."
+      ref: main
+      resolved-ref: "50cdf2a89191fda9feb614d3b7ec4f74da677bf0"
+      url: "https://github.com/disparta/paystack_flutter_web.git"
+    source: git
     version: "0.0.3"
   platform:
     dependency: transitive
