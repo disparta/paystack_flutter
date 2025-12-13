@@ -5,19 +5,92 @@ A [Paystack](https://paystack.com) plugin for accepting payments in your Flutter
 ## Support 
 | Android |   iOS   |  MacOS  |   Web   |  Linux  | Windows |
 |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |
-| &check; | &check; | &cross; | &cross; | &cross; | &cross; |
+| &check; | &check; | &cross; | &check; | &cross; | &cross; |
 
 ## Requirements
 Paystack Flutter SDK builds upon the recent patterns in the Android and iOS, thus your app should target:
-- Flutter >= 3.3.0
-- iOS >= 13
+- Flutter >= 3.4.0
+- iOS >= 15
 - Android 
-  - Minimum SDK: 23
-  - Compile SDK: 34
+  - Minimum SDK: 24
+  - Compile SDK: 36
 
 > [!IMPORTANT]
 >
 > Flutter (3.3.0 below, at the moment) extends the `FlutterActivity` as the base class for Android. The `FlutterActivity` doesn't have the `ComponentActivity`, a compulsory necessity for loading the payment views with the SDK, in its ancestral tree. To fix this, change the `FlutterActivity` to `FlutterFragmentActivity` in the `MainActivity` in the `android` folder of your project.
+
+## Platform Support
+
+#### Android Support
+Please add the following snippet to your `android/app/proguard-rules.pro` file
+```
+# --- Keep annotation + inner class attributes ---
+-keepattributes Annotation, InnerClasses, Signature
+
+# --- Kotlinx Serialization ---
+-dontnote kotlinx.serialization.AnnotationsKt
+
+-keepclassmembers class kotlinx.serialization.json.** {
+    *** Companion;
+}
+
+-keepclasseswithmembers class kotlinx.serialization.json.** {
+    kotlinx.serialization.KSerializer serializer(...);
+}
+
+# --- Kotlin Standard + kotlinx packages ---
+-keep class kotlin.** { *; }
+-keep class kotlinx.** { *; }
+
+-keepclassmembers class **$WhenMappings {
+    *;
+}
+
+-keepclassmembers class kotlin.Metadata {
+    public *;
+}
+
+# --- Parcelable Support ---
+-keep class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+
+-keepnames class * implements android.os.Parcelable {
+    public static final ** CREATOR;
+}
+
+-keepclassmembers class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+
+# --- Retrofit (Square or standard Retrofit2) ---
+-keep interface retrofit2.Call
+-keep class retrofit2.** { *; }
+-keep interface retrofit2.* { *; }
+
+# Keep Retrofit annotations
+-keepclasseswithmembers class * {
+    @retrofit2.http.* <methods>;
+}
+
+# --- Retrofit – Square package (optional but safe) ---
+-keep class com.squareup.retrofit2.** { *; }
+-keep interface com.squareup.retrofit2.* { *; }
+
+# --- Paystack SDK ---
+-keep class com.paystack.android.core.api.** { *; }
+-keep interface com.paystack.android.core.api.* { *; }
+-keep class com.paystack.android.core.api.models.* { *; }
+
+# Already defined above, but safe to repeat (R8 ignores duplicates)
+-keepattributes Annotation
+```
+
+#### Flutter Web Support
+Please add the following snippet to your `web/index.html` inside `<body></body>` in your Flutter project.
+```
+<script src="https://js.paystack.co/v2/inline.js"></script>
+```
 
 ## Getting Started
 - Install the dependency in your project
