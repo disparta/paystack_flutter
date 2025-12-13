@@ -1,6 +1,6 @@
 name: paystack_flutter_sdk
 description: "Paystack Flutter SDK with support for multiple channels to accept payments from your customers in supported regions."
-version: 0.0.1-alpha.6
+version: 0.0.1-alpha.7
 homepage: https://paystack.com
 repository: https://github.com/PaystackOSS/paystack_flutter
 issue_tracker: https://github.com/PaystackOSS/paystack_flutter/issues
@@ -10,20 +10,14 @@ publish_to: "none"
 
 environment:
   sdk: '>=3.3.0 <4.0.0' 
-  flutter: '>=3.3.0'
+  flutter: '>=3.4.0'
 
 dependencies:
   flutter:
     sdk: flutter
 
-  paystack_flutter_web:
-    git:
-      url: https://github.com/disparta/paystack_flutter_web.git
-      ref: main
-  paystack_flutter_platform_interface:
-    git:
-      url: https://github.com/disparta/paystack_flutter_platform_interface.git
-      ref: main
+  paystack_flutter_web: ^0.0.5
+  paystack_flutter_platform_interface: ^0.0.4+1
 
 dev_dependencies:
   flutter_test:
@@ -40,4 +34,4 @@ flutter:
       ios:
         pluginClass: PaystackSDKPlugin
       web:
-        default_package: paystack_web
+        default_package: paystack_flutter_web
