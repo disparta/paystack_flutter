@@ -4,15 +4,15 @@ import 'package:paystack_flutter_platform_interface/paystack_platform_interface.
 /// The base class for managing payments within your app
 class Paystack {
   /// Configure payment using with:
-  /// publickKey - gotten from the Paystack dashboard
+  /// publickKey - gotten from Paystack dashboard
   /// enableLogging - toggle if you need to view logs or not
-  Future<bool> initialize(String publicKey, bool enableLogging) {
+  Future<bool> initialize(String publicKey, bool enableLogging) async {
     return PaystackSDKPlatform.instance.initialize(publicKey, enableLogging);
   }
 
   /// This method launches the payment UI for customers to interact with
   /// when completing a payment
-  Future<TransactionResponse> launch(String accessCode) {
+  Future<TransactionResponse> launch(String accessCode) async {
     return PaystackSDKPlatform.instance.launch(accessCode);
   }
 }
