@@ -18,8 +18,8 @@ dependencies:
 
   paystack_flutter_web: ^0.0.5
   paystack_flutter_platform_interface: ^0.0.4+1
-  paystack_desktop:
-    path: ../paystack_desktop
+  #paystack_desktop:
+  #  path: ../paystack_desktop
 
 dev_dependencies:
   flutter_test:
